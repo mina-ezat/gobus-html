@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>جوباص – أسرع وأريح وسيلة سفر في مصر</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FC9901',
+            navy: '#393C59',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+<!-- GLOBAL HEADER -->
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+      <nav class="hidden lg:flex items-center gap-6">
+        <a href="#">اتصل بنا</a>
+        <a href="#">الشروط والأحكام</a>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شركة جوباص</a>
+        <a href="#">أخبار جوباص</a>
+        <a href="#">الأسئلة الشائعة</a>
+        <a href="#" class="font-bold">English</a>
+        <span class="phone flex items-center gap-1 font-bold">19567</span>
+      </nav>
+    </div>
+  </div>
+  <div class="nav-bar px-6 lg:px-12 py-0">
+    <div class="max-w-[1440px] mx-auto flex items-end justify-between">
+      <div class="flex items-end gap-0">
+        <div class="flex items-end gap-1 mr-6">
+          <button class="svc-tab active" id="st-bus"> <i class="fa fa-bus text-xs"></i> جوباص</button>
+          <button class="svc-tab" id="st-mini"> <i class="fa fa-shuttle-van text-xs"></i> جو ميني</button>
+          <button class="svc-tab" id="st-limo"> <i class="fa fa-car text-xs"></i> جو ليمو</button>
+        </div>
+        <div class="pb-2 cursor-pointer pr-4" onclick="navigate('index')">
+          <span class="text-[26px] font-black" style="color:#393C59;line-height:1">go<span style="color:#FC9901">bus.</span></span>
+        </div>
+      </div>
+      <div class="hidden lg:flex items-center gap-8 pb-3">
+        <span class="nav-link">محطات جوباص</span>
+        <span class="nav-link">خطوط السفر</span>
+        <span class="nav-link" onclick="navigate('bundles')">اشتراكات التوفير</span>
+        <span class="nav-link active" onclick="navigate('index')">الصفحة الرئيسية</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 lg:py-14 relative z-10">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        
+        <!-- SEARCH CARD -->
+        <div class="search-card flex-shrink-0 w-full lg:w-[540px]">
+          <div class="flex items-center gap-5 mb-5">
+            <label class="radio-label"><input type="radio" name="ttype" value="round" checked onchange="toggleRet()"> سفر وعودة</label>
+            <label class="radio-label"><input type="radio" name="ttype" value="one" onchange="toggleRet()"> سفر فقط</label>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-1">
+            <div>
+              <span class="field-label">سفر من مدينة</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-map-marker-alt" style="color:#FC9901"></i></span>
+                <select id="fc" class="truncate">
+                  <option value="cairo">القاهرة</option><option value="alex">الاسكندرية</option>
+                  <option value="aswan">أسوان</option><option value="luxor">الأقصر</option>
+                  <option value="hurghada">الغردقة</option><option value="sharm">شرم الشيخ</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <span class="field-label">سفر من محطة</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-building" style="color:#FC9901"></i></span>
+                <select id="fs"><option>عبد المنعم رياض</option><option>الماظة</option></select>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center -my-2 relative z-20">
+            <button class="swap-btn" onclick="swapCities()"><i class="fa fa-exchange-alt"></i></button>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div>
+              <span class="field-label">وصول إلى مدينة</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-map-marker-alt" style="color:#393C59"></i></span>
+                <select id="tc" class="truncate">
+                  <option value="alex">الاسكندرية</option><option value="cairo">القاهرة</option>
+                  <option value="aswan">أسوان</option><option value="luxor">الأقصر</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <span class="field-label">وصول إلى محطة</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-building" style="color:#393C59"></i></span>
+                <select id="ts"><option>سيدي جابر</option><option>المحطة المركزية</option></select>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-5">
+            <div>
+              <span class="field-label">تاريخ السفر</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-calendar-alt" style="color:#FC9901"></i></span>
+                <input type="text" id="dp-go" readonly placeholder="اختر تاريخ"/>
+              </div>
+            </div>
+            <div id="ret-wrap">
+              <span class="field-label">تاريخ العودة</span>
+              <div class="field-wrap">
+                <span class="icon"><i class="fa fa-calendar-alt" style="color:#393C59"></i></span>
+                <input type="text" id="dp-ret" readonly placeholder="اختر تاريخ"/>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="text-right">
+              <span class="field-label mb-0">عدد المسافرين</span>
+              <p class="text-[10px] text-gray-400 font-bold">تُحسب تذكرة كاملة للأطفال فوق 4 سنوات</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="pax-btn pax-minus" onclick="cPax(-1)" style="background:#BBC9D9;color:#fff;border-radius:2px">−</button>
+              <span id="pax-n" class="text-lg font-black text-navy w-5 text-center">1</span>
+              <button class="pax-btn pax-plus" onclick="cPax(1)" style="background:#FC9900;color:#fff;border-radius:2px">+</button>
+            </div>
+          </div>
+          <button class="search-btn" onclick="doSearch()">
+            <i class="fa fa-search"></i> أعرض رحلات جو باص
+          </button>
+        </div>
+
+        <!-- HERO TEXT -->
+        <div class="hero-content mt-8 lg:mt-4 text-white text-right flex-1">
+          <p class="text-lg font-bold text-navy mb-1">مسافر على فين؟</p>
+          <h1 class="hero-headline xl:text-[52px]">أسرع وأريح وسيلة سفر في مصر</h1>
+          <div class="mt-8 flex flex-wrap gap-8 items-center justify-end">
+            <div class="text-center">
+              <div class="text-4xl font-black">+١٤٠٠</div>
+              <div class="text-sm opacity-70">أتوبيس</div>
+            </div>
+            <div class="w-px h-12 bg-white/20"></div>
+            <div class="text-center">
+              <div class="text-4xl font-black">٨٧</div>
+              <div class="text-sm opacity-70">مدينة مصرية</div>
+            </div>
+            <div class="w-px h-12 bg-white/20"></div>
+            <div class="text-center">
+              <div class="text-4xl font-black">٢٤/٧</div>
+              <div class="text-sm opacity-70">خدمة العملاء</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO SECTION -->
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="promo-family" onclick="navigate('trips')">
+        <span class="badge-new">جديد من جوباص</span>
+        <h3 class="promo-title">سافر مع عيلتك أو أصحابك<br><span class="highlight">بخصم حتى 15%</span></h3>
+        <button class="promo-cta">أحجز الآن</button>
+      </div>
+      <div class="promo-bundle" onclick="navigate('bundles')">
+        <span class="badge-new">جديد من جوباص</span>
+        <h3 class="promo-title">سافر ووفر على نفس الخط<br>مع باقات التوفير</h3>
+        <button class="promo-cta">اشترك الآن</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 pb-16">
+    <div class="text-center mb-10">
+      <h2 class="text-[26px] font-black text-black mb-2">تجربة سفر ممتعة ومريحة</h2>
+      <p class="text-lg">أكثر من ١٤٠٠ أتوبيس حول أكثر من ٨٧ مدينة مصرية</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="svc-banner">
+        <img src="https://i.ibb.co/L8T6SVT/limo.jpg" class="absolute inset-0 w-full h-full object-cover" alt="جو ليمو" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80'"/>
+        <div class="grad-overlay"></div>
+        <div class="info">
+          <h3>جو ليمو</h3>
+          <p>سافر بسيارة خاصة فاخرة</p>
+          <button class="cta-banner">أحجز جو ليمو</button>
+        </div>
+      </div>
+      <div class="svc-banner">
+        <img src="https://i.ibb.co/VvzMHSs/mini.jpg" class="absolute inset-0 w-full h-full object-cover" alt="جو ميني" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80'"/>
+        <div class="grad-overlay"></div>
+        <div class="info">
+          <h3>جو ميني</h3>
+          <p>سفر سريع وممتع</p>
+          <button class="cta-banner">أحجز جو ميني</button>
+        </div>
+      </div>
+      <div class="svc-banner">
+        <img src="https://i.ibb.co/rtL963m/routes.jpg" class="absolute inset-0 w-full h-full object-cover" alt="وجهات سفر" onerror="this.src='https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80'"/>
+        <div class="grad-overlay"></div>
+        <div class="info">
+          <h3 class="mb-4">وجهات سفر جوباص</h3>
+          <a href="#">٨٧ وجهة سفر حول مصر</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="text-3xl font-black text-navy mb-8">go<span style="color:#FC9901">bus.</span></div>
+    <div class="footer-links mb-8">
+      <a href="#">عن الشركة</a><a href="#">جهات السفر</a><a href="#">محطات السفر</a>
+      <a href="#">أحجز جو ميني</a><a href="#">أحجز جو ليمو</a><a href="#">الأسئلة الشائعة</a>
+      <a href="#">أخبار جوباص</a><a href="#">اتصل بنا</a><a href="#">حجز أتوبيس</a>
+    </div>
+    <div class="flex justify-center gap-4 mb-8 text-xl text-gray-400">
+      <i class="fab fa-facebook-f cursor-pointer hover:text-primary"></i>
+      <i class="fab fa-twitter cursor-pointer hover:text-primary"></i>
+      <i class="fab fa-instagram cursor-pointer hover:text-primary"></i>
+      <i class="fab fa-youtube cursor-pointer hover:text-primary"></i>
+    </div>
+    <div class="footer-lang">English</div>
+    <p class="footer-copy">جميع حقوق التصميم والملكية الفكرية مسجلة ومحفوظة لشركة جوباص © ٢٠٢٥</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  $(function(){
+    flatpickr('#dp-go',{ locale:'en', minDate:'today', dateFormat:'j M Y', defaultDate:new Date() });
+    flatpickr('#dp-ret',{ locale:'en', minDate:'today', dateFormat:'j M Y' });
+  });
+
+  function toggleRet(){
+    var v=$('input[name="ttype"]:checked').val();
+    $('#ret-wrap').css('opacity', v==='one'?.4:1).css('pointer-events',v==='one'?'none':'all');
+  }
+
+  function swapCities(){
+    var f=$('#fc').val(), t=$('#tc').val();
+    $('#fc').val(t); $('#tc').val(f);
+    toast('تم تبديل المدينتين ↕');
+  }
+
+  function cPax(d){
+    S.pax=Math.max(1,Math.min(9,S.pax+d));
+    $('#pax-n').text(S.pax);
+  }
+
+  function doSearch(){
+    if($('#fc').val()===$('#tc').val()){toast('⚠️ اختر مدينتين مختلفتين');return;}
+    S.fromCity = $('#fc option:selected').text();
+    S.toCity = $('#tc option:selected').text();
+    S.goDate = $('#dp-go').val();
+    S.retDate = $('#dp-ret').val();
+    S.isRound = $('input[name="ttype"]:checked').val() === 'round';
+    
+    loader(true);
+    setTimeout(() => {
+      loader(false);
+      navigate('trips');
+    }, 800);
+  }
+</script>
+</body>
+</html>

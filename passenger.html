@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>بيانات المسافر - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+      <div class="hidden lg:flex items-center gap-6">
+        <span class="phone font-bold">19567</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="step-bar">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex items-center justify-between text-white text-xs mb-3">
+      <button onclick="navigate('seats')" class="flex items-center gap-1 opacity-70 hover:opacity-100 transition"><i class="fa fa-arrow-right ml-1"></i> الرجوع</button>
+      <span class="font-bold opacity-90">بيانات المسافر</span>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot active">٣</div> <div class="sline"></div>
+      <div class="sdot pend">٤</div>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-2xl mx-auto px-6 py-12">
+  <div class="bg-white rounded-[24px] p-8 lg:p-10 shadow-sm border border-gray-100">
+    <h2 class="text-2xl font-black text-navy mb-8 flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary text-xl"><i class="fa fa-user-circle"></i></div>
+      بيانات المسافر
+    </h2>
+    <div class="space-y-6">
+      <div class="grid grid-cols-2 gap-5">
+        <div>
+          <label class="text-xs font-bold text-gray-500 mb-2 block uppercase tracking-wide">الاسم الأول *</label>
+          <input type="text" class="finput h-14" placeholder="محمد" id="p-fn"/>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-500 mb-2 block uppercase tracking-wide">اسم العائلة *</label>
+          <input type="text" class="finput h-14" placeholder="أحمد" id="p-ln"/>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-gray-500 mb-2 block uppercase tracking-wide">رقم الهاتف *</label>
+        <input type="tel" class="finput h-14" placeholder="01xxxxxxxxx" dir="ltr" id="p-ph"/>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-gray-500 mb-2 block uppercase tracking-wide">البريد الإلكتروني</label>
+        <input type="email" class="finput h-14" placeholder="example@email.com" dir="ltr" id="p-mail"/>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-gray-500 mb-2 block uppercase tracking-wide">رقم الهوية الوطنية *</label>
+        <input type="text" class="finput h-14" placeholder="أدخل رقم الهوية" id="p-nid"/>
+      </div>
+
+      <!-- PROMO SECTION -->
+      <div class="bg-orange-50/50 border border-orange-100/50 rounded-2xl p-6 mt-8">
+        <label class="text-sm font-bold text-navy mb-3 flex items-center gap-2 block">
+          <i class="fa fa-tag text-primary"></i> كود خصم (اختياري)
+        </label>
+        <div class="flex gap-3">
+          <input type="text" id="promo-inp" class="finput flex-1 h-12 border-orange-200 focus:border-orange-400" placeholder="أدخل الكود هنا"/>
+          <button onclick="applyPromo()" class="btn-orange px-8 h-12 rounded-xl text-sm font-black shadow-lg shadow-orange-500/20">تطبيق</button>
+        </div>
+        <p id="promo-msg" class="text-xs mt-3 hidden font-bold"></p>
+      </div>
+
+      <button onclick="proceedCheckout()" class="btn-green w-full h-[64px] rounded-[18px] font-black text-lg mt-10 shadow-xl shadow-green-500/20">
+        متابعة إلى الدفع ←
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/passenger.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>تسجيل الدخول - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-navy to-[#1a1f40] min-h-screen flex items-center justify-center p-6">
+
+<div class="bg-white rounded-[32px] p-10 w-full max-w-[420px] shadow-2xl shadow-navy/50 relative overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+
+  <div class="text-center mb-10">
+    <div class="text-[42px] font-black text-navy leading-none mb-3">go<span class="text-primary">bus.</span></div>
+    <h2 class="text-xl font-black text-navy mb-1">أهلاً بك مجدداً!</h2>
+    <p class="text-xs font-bold text-gray-400">سجّل دخولك واستمتع برحلة مريحة</p>
+  </div>
+  
+  <div class="space-y-5">
+    <div>
+      <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">رقم الهاتف</label>
+      <input id="l-ph" class="finput h-14 border-gray-100 bg-gray-50/50" type="tel" placeholder="01xxxxxxxxx" dir="ltr"/>
+    </div>
+    <div>
+      <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">كلمة المرور</label>
+      <div class="relative">
+        <input id="l-pw" class="finput h-14 border-gray-100 bg-gray-50/50 pl-12" type="password" placeholder="••••••••"/>
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-navy transition"><i class="fa fa-eye-slash"></i></button>
+      </div>
+    </div>
+    
+    <div class="flex justify-between items-center text-xs font-bold">
+      <a href="#" class="text-primary hover:underline">نسيت كلمة المرور؟</a>
+      <label class="flex items-center gap-2 text-gray-400 cursor-pointer"><input type="checkbox" class="accent-primary"/> تذكرني</label>
+    </div>
+    
+    <button onclick="doLogin()" class="btn-navy w-full h-14 rounded-2xl font-black text-lg mt-4 shadow-xl shadow-navy/20">تسجيل الدخول</button>
+    
+    <div class="relative text-center py-4">
+      <hr class="border-gray-100"/>
+      <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-[10px] font-black text-gray-300 uppercase tracking-widest leading-none">أو</span>
+    </div>
+    
+    <div class="grid grid-cols-2 gap-4">
+      <button class="flex items-center justify-center gap-2 h-14 rounded-xl border border-gray-100 font-bold text-xs hover:bg-gray-50 transition border-b-2">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5" alt="Google"/> Google
+      </button>
+      <button class="flex items-center justify-center gap-2 h-14 rounded-xl border border-[#e8f0fe] font-bold text-xs hover:bg-white transition border-b-2 text-[#1877F2]">
+        <i class="fab fa-facebook text-lg"></i> Facebook
+      </button>
+    </div>
+  </div>
+  
+  <p class="text-center text-sm font-bold text-gray-400 mt-10">
+    ليس لديك حساب؟ <a href="#" onclick="navigate('signup')" class="text-primary font-black ml-1">أنشئ حساباً جديداً</a>
+  </p>
+  <button onclick="navigate('index')" class="w-full text-center text-xs font-bold text-gray-300 mt-4 uppercase tracking-widest hover:text-navy transition">← الرجوع للرئيسية</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  function doLogin() {
+    const ph = $('#l-ph').val().trim();
+    const pw = $('#l-pw').val().trim();
+    if (!ph || !pw) { toast('⚠️ أدخل البيانات المطلوبة'); return; }
+    
+    loader(true);
+    setTimeout(() => {
+      loader(false);
+      localStorage.setItem('gobus_user', JSON.stringify({ name: 'محمد أحمد', points: 102 }));
+      navigate('index');
+    }, 1200);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>تحقق من هاتفك - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-navy to-[#1a1f40] min-h-screen flex items-center justify-center p-6">
+
+<div class="bg-white rounded-[32px] p-10 w-full max-w-[440px] shadow-2xl shadow-navy/50 relative text-center">
+  <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/30 rotate-3">
+    <i class="fa fa-mobile-alt text-white text-3xl"></i>
+  </div>
+
+  <h2 class="text-2xl font-black text-navy mb-2">تحقق من هاتفك</h2>
+  <p class="text-xs font-bold text-gray-400 mb-1">أرسلنا رمز التحقق (OTP) إلى</p>
+  <p class="text-base font-black text-navy mb-8 tracking-widest" dir="ltr">010XX XXXXX</p>
+  
+  <div class="flex gap-2 justify-center mb-8" dir="ltr">
+    <input type="text" maxlength="1" class="otp-input w-12 h-16 border-2 border-gray-100 rounded-xl text-center text-2xl font-black shadow-inner focus:border-primary focus:shadow-none transition" onkeyup="next(this)"/>
+    <input type="text" maxlength="1" class="otp-input w-12 h-16 border-2 border-gray-100 rounded-xl text-center text-2xl font-black shadow-inner focus:border-primary focus:shadow-none transition" onkeyup="next(this)"/>
+    <input type="text" maxlength="1" class="otp-input w-12 h-16 border-2 border-gray-100 rounded-xl text-center text-2xl font-black shadow-inner focus:border-primary focus:shadow-none transition" onkeyup="next(this)"/>
+    <input type="text" maxlength="1" class="otp-input w-12 h-16 border-2 border-gray-100 rounded-xl text-center text-2xl font-black shadow-inner focus:border-primary focus:shadow-none transition" onkeyup="next(this)"/>
+  </div>
+  
+  <button onclick="doVerify()" class="btn-navy w-full h-14 rounded-2xl font-black text-lg mb-6 shadow-xl shadow-navy/20">تأكيد الرمز</button>
+  
+  <p class="text-[13px] font-bold text-gray-400">
+    لم يصلك الرمز؟ 
+    <button id="resend-btn" onclick="startResend()" class="text-primary font-black hover:underline cursor-pointer">إعادة الإرسال</button>
+    <span id="resend-timer" class="text-primary font-black hidden"> بعد <span id="rtime">60</span>ث</span>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  function next(el) {
+    if (el.value.length >= 1) {
+      $(el).next('.otp-input').focus();
+    }
+  }
+
+  function doVerify() {
+    loader(true);
+    setTimeout(() => {
+      loader(false);
+      localStorage.setItem('gobus_user', JSON.stringify({ name: 'محمد أحمد', points: 102 }));
+      navigate('index');
+    }, 1500);
+  }
+
+  function startResend() {
+    startResendTimer('#resend-btn', '#resend-timer', '#rtime');
+    toast('💬 تم إعادة إرسال الرمز');
+  }
+</script>
+</body>
+</html>

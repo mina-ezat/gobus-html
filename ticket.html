@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>تم الحجز بنجاح - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<div class="max-w-[540px] mx-auto px-6 py-12">
+  <div class="text-center mb-10">
+    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl shadow-green-500/30">
+      <i class="fa fa-check text-white text-3xl"></i>
+    </div>
+    <h1 class="text-3xl font-black text-navy mb-2 tracking-tight">تم الحجز بنجاح! 🎉</h1>
+    <p class="text-sm font-bold text-gray-400">سيصلك SMS بتفاصيل تذكرتك على هاتفك</p>
+  </div>
+
+  <!-- TICKET CARD -->
+  <div class="bg-white rounded-[24px] shadow-2xl shadow-gray-200/50 overflow-hidden">
+    <!-- Ticket Header -->
+    <div class="bg-gradient-to-br from-navy to-[#4a5580] p-8">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-3xl font-black text-white">go<span class="text-primary">bus.</span></span>
+        <span class="bg-green-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg shadow-green-500/20"><i class="fa fa-check-circle text-[11px]"></i> مؤكدة</span>
+      </div>
+      <div class="flex items-center gap-6 text-white">
+        <div class="text-right flex-1">
+          <div class="text-3xl font-black" id="tkt-from">القاهرة</div>
+          <div class="text-xs opacity-60 font-bold mt-1 tracking-wide">عبد المنعم رياض</div>
+          <div class="text-2xl font-black text-primary mt-1" id="tkt-time">٠٨:٠٠ ص</div>
+        </div>
+        <div class="flex-1 text-center opacity-40">
+          <div class="flex items-center gap-3">
+            <div class="flex-1 border-t-2 border-dashed border-white"></div>
+            <i class="fa fa-bus text-primary text-xl"></i>
+            <div class="flex-1 border-t-2 border-dashed border-white"></div>
+          </div>
+          <div class="text-[10px] uppercase tracking-widest font-black mt-3">٣ ساعات</div>
+        </div>
+        <div class="text-left flex-1">
+          <div class="text-3xl font-black" id="tkt-to">اسكندرية</div>
+          <div class="text-xs opacity-60 font-bold mt-1 tracking-wide">سيدي جابر</div>
+          <div class="text-2xl font-black text-primary mt-1" id="tkt-arr">١١:٠٠ ص</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticket Notch -->
+    <div class="bg-[#F5F6FA] relative h-8 mx-6">
+      <div class="absolute -top-4 -left-10 w-8 h-8 rounded-full bg-[#F5F6FA]"></div>
+      <div class="absolute -top-4 -right-10 w-8 h-8 rounded-full bg-[#F5F6FA]"></div>
+      <hr class="border-none border-t-2 border-dashed border-gray-200 absolute top-1/2 left-0 right-0 -translate-y-1/2"/>
+    </div>
+
+    <!-- Ticket Content -->
+    <div class="p-8">
+      <div class="grid grid-cols-3 gap-6 mb-8 text-center border-b border-gray-50 pb-8">
+        <div><div class="text-[10px] font-bold text-gray-400 uppercase mb-1 tracking-widest">التاريخ</div><div class="font-black text-navy text-sm" id="tkt-date">٢١ مارس ٢٠٢٥</div></div>
+        <div><div class="text-[10px] font-bold text-gray-400 uppercase mb-1 tracking-widest">المقعد</div><div class="text-3xl font-black text-navy leading-none" id="tkt-seat">١٢</div></div>
+        <div><div class="text-[10px] font-bold text-gray-400 uppercase mb-1 tracking-widest">الدرجة</div><div class="font-black text-navy text-sm" id="tkt-cls">Super Jet</div></div>
+      </div>
+      <div class="grid grid-cols-2 gap-6 mb-8 text-right text-sm">
+        <div><div class="text-[10px] font-bold text-gray-400 uppercase mb-1 tracking-widest">المسافر</div><div class="font-black text-navy" id="tkt-name">...</div></div>
+        <div><div class="text-[10px] font-bold text-gray-400 uppercase mb-1 tracking-widest">المبلغ المدفوع</div><div class="font-black text-primary text-lg" id="tkt-price">...</div></div>
+      </div>
+
+      <!-- QR CODE -->
+      <div class="bg-gray-50 rounded-2xl p-6 mb-10 text-center border border-gray-100">
+        <div class="w-32 h-32 mx-auto mb-4 bg-white p-4 rounded-xl shadow-inner border border-gray-100">
+          <svg viewBox="0 0 100 100" class="w-full h-full fill-navy"><rect x="10" y="10" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="70" width="20" height="20"/><rect x="10" y="40" width="10" height="10"/><rect x="40" y="10" width="10" height="10"/><rect x="40" y="40" width="20" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/><rect x="70" y="70" width="20" height="20"/></svg>
+        </div>
+        <p class="text-[10px] font-bold text-gray-400 tracking-wider">امسح الكود عند الصعود على الأتوبيس</p>
+      </div>
+
+      <!-- Actions -->
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <button class="btn-orange h-14 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"><i class="fa fa-download text-xs"></i> حفظ كصورة</button>
+        <button class="h-14 bg-gray-100 rounded-xl font-bold flex items-center justify-center gap-2 text-navy hover:bg-gray-200 transition"><i class="fa fa-share-alt text-xs"></i> مشاركة</button>
+      </div>
+      <button onclick="navigate('index')" class="w-full h-12 text-gray-400 font-bold text-sm tracking-wide hover:text-navy transition uppercase">العودة للرئيسية ←</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  $(function() {
+    if (!S.passenger) navigate('index');
+    
+    $('#tkt-name').text(`${S.passenger.firstName} ${S.passenger.lastName}`);
+    $('#tkt-from').text(S.fromCity || 'القاهرة');
+    $('#tkt-to').text(S.toCity || 'اسكندرية');
+    $('#tkt-date').text(S.goDate || '٢١ مارس ٢٠٢٥');
+    $('#tkt-time').text(S.trip ? S.trip.t : '٠٨:٠٠ ص');
+    $('#tkt-seat').text(S.seats ? S.seats.join(', ') : '١٢');
+    $('#tkt-cls').text(S.trip ? S.trip.cl : 'Super Jet');
+    
+    const price = S.trip ? S.trip.p : 95;
+    const count = S.seats ? S.seats.length : 1;
+    const total = (price * count) - S.promo;
+    $('#tkt-price').text(`${total} ج.م`);
+  });
+</script>
+</body>
+</html>

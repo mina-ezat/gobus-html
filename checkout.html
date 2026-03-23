@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>الدفع - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="step-bar">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex items-center justify-between text-white text-xs mb-3">
+      <button onclick="navigate('passenger')" class="flex items-center gap-1 opacity-70 hover:opacity-100 transition"><i class="fa fa-arrow-right ml-1"></i> الرجوع</button>
+      <span class="font-bold opacity-90">الدفع</span>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot active">٤</div>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+  <div class="flex flex-col lg:flex-row gap-8 items-start">
+    
+    <!-- PAYMENT METHODS -->
+    <div class="flex-1 space-y-6">
+      <div class="bg-white rounded-[24px] p-8 lg:p-10 shadow-sm border border-gray-100">
+        <h2 class="text-xl font-black text-navy mb-8">اختر طريقة الدفع</h2>
+        <div class="space-y-4">
+          <!-- CARD -->
+          <div class="pay-opt active" id="pm-card" onclick="selPay('card')">
+            <div class="flex items-center gap-4">
+              <input type="radio" name="pm" checked style="width:18px;height:18px"/>
+              <i class="fa fa-credit-card text-primary text-2xl"></i>
+              <div>
+                <div class="font-black text-navy">بطاقة بنكية</div>
+                <div class="text-[11px] text-gray-400 font-bold">Visa / Mastercard / Meeza</div>
+              </div>
+              <div class="mr-auto opacity-30 text-3xl">💳</div>
+            </div>
+          </div>
+          <!-- CARD FIELDS -->
+          <div id="card-fields" class="bg-gray-50/50 rounded-2xl p-6 border border-gray-100 flex flex-col gap-5">
+            <div>
+              <label class="text-xs font-bold text-gray-400 mb-2 block tracking-wider uppercase">رقم البطاقة</label>
+              <input class="finput h-12" placeholder="XXXX XXXX XXXX XXXX" dir="ltr" maxlength="19" oninput="fmtCard(this)"/>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold text-gray-400 mb-2 block tracking-wider uppercase">تاريخ الانتهاء</label>
+                <input class="finput h-12" placeholder="MM / YY" dir="ltr" maxlength="7"/>
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-400 mb-2 block tracking-wider uppercase">CVV</label>
+                <input class="finput h-12" placeholder="•••" dir="ltr" maxlength="3" type="password"/>
+              </div>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-400 mb-2 block tracking-wider uppercase">اسم حامل البطاقة</label>
+              <input class="finput h-12" dir="ltr" placeholder="NAME ON CARD"/>
+            </div>
+          </div>
+          
+          <!-- FAWRY -->
+          <div class="pay-opt" id="pm-fawry" onclick="selPay('fawry')">
+            <div class="flex items-center gap-4">
+              <input type="radio" name="pm" style="width:18px;height:18px"/>
+              <span class="bg-[#FFD700] text-[#393C59] text-[10px] font-black px-2 py-1 rounded">FAWRY</span>
+              <div>
+                <div class="font-black text-navy text-sm">فوري</div>
+                <div class="text-[11px] text-gray-400 font-bold">ادفع من أي منفذ فوري</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- WALLET -->
+          <div class="pay-opt" id="pm-wallet" onclick="selPay('wallet')">
+            <div class="flex items-center gap-4">
+              <input type="radio" name="pm" style="width:18px;height:18px"/>
+              <i class="fa fa-mobile-alt text-green-500 text-2xl"></i>
+              <div>
+                <div class="font-black text-navy text-sm">محفظة إلكترونية</div>
+                <div class="text-[11px] text-gray-400 font-bold">Vodafone Cash / Orange Money / Etisalat</div>
+              </div>
+            </div>
+          </div>
+          <!-- WALLET FIELDS -->
+          <div id="wallet-fields" class="hidden bg-gray-50/50 rounded-2xl p-6 border border-gray-100">
+            <label class="text-xs font-bold text-gray-400 mb-2 block tracking-wider uppercase">رقم الهاتف المحفظة</label>
+            <input class="finput h-12" type="tel" placeholder="01xxxxxxxxx" dir="ltr"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside class="w-full lg:w-80 flex-shrink-0">
+      <div class="bg-navy rounded-[24px] p-8 text-white shadow-xl shadow-navy/20 sticky top-[100px]">
+        <h3 class="text-lg font-black mb-6 pb-4 border-b border-white/10 uppercase tracking-widest text-center">ملخص الطلب</h3>
+        <div class="space-y-4 text-sm font-bold opacity-90">
+          <div class="flex justify-between items-center"><span class="opacity-60">المسافر</span><span id="co-name" class="text-xs truncate max-w-[120px]">...</span></div>
+          <div class="flex justify-between items-center"><span class="opacity-60">التاريخ</span><span id="co-dt">...</span></div>
+          <div class="flex justify-between items-center"><span class="opacity-60">الوقت</span><span id="co-tm" class="text-primary">...</span></div>
+          <div class="flex justify-between items-center"><span class="opacity-60">المقعد</span><span id="co-seat" class="text-primary">...</span></div>
+          <hr class="border-white/5"/>
+          <div class="flex justify-between items-center"><span class="opacity-60">سعر التذكرة</span><span id="co-price">...</span></div>
+          <div class="flex justify-between items-center text-green-400"><span class="opacity-60">الخصم</span><span id="co-disc">...</span></div>
+          <div class="bg-white/5 p-5 rounded-2xl mt-8 flex flex-col items-center">
+            <span class="text-xs opacity-60 uppercase mb-2">المبلغ المطلوب دفعه</span>
+            <span id="co-total" class="text-3xl font-black text-primary leading-none">...</span>
+          </div>
+          <button onclick="completePay()" class="btn-green w-full h-14 rounded-xl font-black text-lg mt-6 shadow-xl shadow-green-500/10">
+            <i class="fa fa-lock text-sm mr-2 opacity-60"></i> إتمام الدفع الآمن
+          </button>
+          <div class="text-[10px] text-center opacity-40 font-bold mt-4">
+            <i class="fa fa-shield-alt mr-1"></i> جميع المعاملات مشفرة و آمنة 100%
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

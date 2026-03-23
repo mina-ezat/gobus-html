@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>اختار رحلتك - جوباص</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<!-- GLOBAL HEADER (simplified for MPA) -->
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+      <div class="hidden lg:flex items-center gap-6">
+        <span class="phone font-bold">19567</span>
+        <a href="#" class="font-bold">English</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STEP BAR -->
+<div class="step-bar">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex items-center justify-between text-white text-xs mb-3">
+      <button onclick="navigate('index')" class="flex items-center gap-1 opacity-70 hover:opacity-100 transition"><i class="fa fa-arrow-right ml-1"></i> تعديل البحث</button>
+      <span class="font-bold opacity-90" id="trips-lbl">جارِ التحميل...</span>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="sdot active">١</div> <div class="sline"></div>
+      <div class="sdot pend">٢</div> <div class="sline"></div>
+      <div class="sdot pend">٣</div> <div class="sline"></div>
+      <div class="sdot pend">٤</div>
+    </div>
+    <div class="flex justify-between text-white opacity-50 text-[11px] mt-2 font-bold px-2">
+      <span class="w-16">اختيار الرحلة</span> <span class="w-16">اختيار المقعد</span>
+      <span class="w-16">بيانات المسافر</span> <span class="w-16">الدفع</span>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-8">
+    
+    <!-- FILTERS -->
+    <aside class="lg:w-64 flex-shrink-0">
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 sticky top-[100px] shadow-sm">
+        <h3 class="font-black text-navy text-sm mb-5 flex items-center gap-2">
+          <i class="fa fa-sliders-h text-primary"></i> تصفية النتائج
+        </h3>
+        <!-- Time Filter -->
+        <div class="mb-5">
+          <p class="text-xs font-bold text-gray-400 uppercase mb-3 px-1">وقت الإقلاع</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="filter-chip on">صباحاً</span>
+            <span class="filter-chip on">مساءً</span>
+            <span class="filter-chip">ليلاً</span>
+          </div>
+        </div>
+        <!-- Price Filter -->
+        <div class="mb-5 px-1">
+          <p class="text-xs font-bold text-gray-400 uppercase mb-3">السعر (ج.م)</p>
+          <input type="range" min="50" max="400" value="400" class="w-full accent-primary shadow-sm"/>
+        </div>
+        <!-- Amenities -->
+        <div class="px-1">
+          <p class="text-xs font-bold text-gray-400 uppercase mb-3">المميزات</p>
+          <div class="space-y-3 text-sm font-bold text-navy">
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" checked/> WiFi مجاني</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox"/> وجبات</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" checked/> تكييف</label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- LIST -->
+    <div class="flex-1">
+      <div class="flex items-center justify-between mb-5">
+        <p class="text-sm font-bold text-gray-400 uppercase tracking-wide">عُثر على <strong id="trip-count" class="text-navy font-black text-base"><span id="trip-count-val">0</span></strong> رحلات</p>
+        <select class="finput w-auto h-10 py-0 text-sm font-bold rounded-xl border-gray-100 bg-white">
+          <option>ترتيب: الوقت</option><option>ترتيب: السعر ↑</option>
+        </select>
+      </div>
+      <div id="trips-list" class="space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/trips.js"></script>
+</body>
+</html>

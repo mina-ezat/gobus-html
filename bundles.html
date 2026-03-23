@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>باقات التوفير - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+      <div class="hidden lg:flex items-center gap-6">
+        <span class="phone font-bold">19567</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+  <div class="flex items-center gap-4 mb-8">
+    <button onclick="navigate('index')" class="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-xl flex items-center justify-center text-navy hover:bg-gray-50 transition"><i class="fa fa-arrow-right"></i></button>
+    <div>
+      <h2 class="text-3xl font-black text-navy mb-1 tracking-tight">باقات التوفير</h2>
+      <p class="text-xs font-bold text-gray-400">اشترك الآن واستمتع بخصومات حصرية على جميع الرحلات</p>
+    </div>
+  </div>
+
+  <div class="flex gap-2 flex-wrap mb-10 overflow-x-auto pb-4 hide-scrollbar">
+    <span class="filter-chip on bg-primary border-primary text-white px-5 py-2.5 rounded-full font-black text-sm shadow-lg shadow-primary/20 cursor-pointer">كل الباقات</span>
+    <span class="filter-chip bg-white border-gray-100 text-navy px-5 py-2.5 rounded-full font-black text-sm shadow-sm hover:shadow-md transition cursor-pointer">فردي</span>
+    <span class="filter-chip bg-white border-gray-100 text-navy px-5 py-2.5 rounded-full font-black text-sm shadow-sm hover:shadow-md transition cursor-pointer">عائلي</span>
+    <span class="filter-chip bg-white border-gray-100 text-navy px-5 py-2.5 rounded-full font-black text-sm shadow-sm hover:shadow-md transition cursor-pointer">طلاب</span>
+    <span class="filter-chip bg-white border-gray-100 text-navy px-5 py-2.5 rounded-full font-black text-sm shadow-sm hover:shadow-md transition cursor-pointer">VIP</span>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+    
+    <!-- CARD 1 -->
+    <div class="bg-gradient-to-br from-[#393C59] to-[#4a5580] rounded-[32px] p-8 text-white shadow-2xl shadow-navy/20 relative overflow-hidden group">
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-125 transition duration-700"></div>
+      <div class="flex justify-between items-start mb-6">
+        <span class="bg-primary text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg shadow-black/20">الأكثر مبيعاً ⭐</span>
+        <span class="text-white/40 text-xs font-bold">٣٠ يوم</span>
+      </div>
+      <h3 class="text-2xl font-black mb-2 leading-tight">باقة القاهرة – اسكندرية</h3>
+      <p class="text-sm opacity-60 mb-8 font-bold leading-relaxed">٢٠ رحلة بخصم ٢٠% على نفس الخط المختار مسبقاً</p>
+      
+      <div class="mb-4 flex items-end gap-2">
+        <span class="text-[42px] font-black text-primary leading-none">١,٢٠٠</span>
+        <span class="text-lg opacity-60 font-bold mb-1">ج.م</span>
+      </div>
+      <div class="text-sm opacity-40 line-through font-bold mb-10">١,٥٠٠ ج.م</div>
+      
+      <div class="space-y-4 mb-10">
+        <div class="flex items-center gap-3"><i class="fa fa-check text-primary"></i> <span class="text-sm font-bold opacity-80">٢٠ رحلة مضمونة</span></div>
+        <div class="flex items-center gap-3"><i class="fa fa-check text-primary"></i> <span class="text-sm font-bold opacity-80">تحديد المقعد مسبقاً</span></div>
+        <div class="flex items-center gap-3"><i class="fa fa-check text-primary"></i> <span class="text-sm font-bold opacity-80">استرداد كامل خلال ٢٤ ساعة</span></div>
+      </div>
+      
+      <button class="btn-orange w-full h-[60px] rounded-2xl font-black text-lg shadow-xl shadow-orange-500/10">اشترك الآن</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="bg-gradient-to-br from-[#1a5c3a] to-[#2d8a56] rounded-[32px] p-8 text-white shadow-2xl shadow-green-900/20 relative overflow-hidden group">
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-125 transition duration-700"></div>
+      <div class="flex justify-between items-start mb-6">
+        <span class="bg-white text-[#2d8a56] text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg shadow-black/20">عائلي 👨‍👩‍👧</span>
+        <span class="text-white/40 text-xs font-bold">٣٠ يوم</span>
+      </div>
+      <h3 class="text-2xl font-black mb-2 leading-tight">الباقة العائلية</h3>
+      <p class="text-sm opacity-60 mb-8 font-bold leading-relaxed">٤ أفراد × ١٠ رحلات بخصم ١٥% لأي وجهة سفر</p>
+      
+      <div class="mb-4 flex items-end gap-2">
+        <span class="text-[42px] font-black text-yellow-400 leading-none">٣,٤٠٠</span>
+        <span class="text-lg opacity-60 font-bold mb-1">ج.م</span>
+      </div>
+      <div class="text-sm opacity-40 line-through font-bold mb-10">٤,٠٠٠ ج.م</div>
+      
+      <div class="space-y-4 mb-10">
+        <div class="flex items-center gap-3"><i class="fa fa-check text-yellow-400"></i> <span class="text-sm font-bold opacity-80">مقاعد متجاورة مضمونة</span></div>
+        <div class="flex items-center gap-3"><i class="fa fa-check text-yellow-400"></i> <span class="text-sm font-bold opacity-80">أولوية صعود لجميع أفراد العائلة</span></div>
+      </div>
+      
+      <button class="bg-[#ffc107] text-navy w-full h-[60px] rounded-2xl font-black text-lg shadow-xl shadow-yellow-500/10 hover:bg-yellow-100 transition">اشترك الآن</button>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

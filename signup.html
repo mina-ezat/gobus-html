@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>إنشاء حساب جديد - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-primary to-[#f5c030] min-h-screen flex items-center justify-center p-6">
+
+<div class="bg-white rounded-[32px] p-10 w-full max-w-[440px] shadow-2xl shadow-primary/30 relative">
+  <div class="text-center mb-8">
+    <div class="text-[42px] font-black text-navy leading-none mb-3">go<span class="text-primary">bus.</span></div>
+    <h2 class="text-xl font-black text-navy mb-1">إنشاء حساب جديد</h2>
+    <p class="text-xs font-bold text-gray-400">انضم لملايين المسافرين مع جوباص</p>
+  </div>
+  
+  <div class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">الاسم الأول *</label>
+        <input class="finput h-14 border-gray-100 bg-gray-50/50" placeholder="محمد"/>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">اسم العائلة *</label>
+        <input class="finput h-14 border-gray-100 bg-gray-50/50" placeholder="أحمد"/>
+      </div>
+    </div>
+    <div>
+      <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">رقم الهاتف *</label>
+      <input class="finput h-14 border-gray-100 bg-gray-50/50" type="tel" placeholder="01xxxxxxxxx" dir="ltr"/>
+    </div>
+    <div>
+      <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">البريد الإلكتروني *</label>
+      <input class="finput h-14 border-gray-100 bg-gray-50/50" type="email" placeholder="example@email.com" dir="ltr"/>
+    </div>
+    <div>
+      <label class="text-xs font-bold text-gray-400 mb-2 block uppercase tracking-wide">كلمة المرور *</label>
+      <input class="finput h-14 border-gray-100 bg-gray-50/50" type="password" placeholder="٨ أحرف على الأقل"/>
+    </div>
+    
+    <label class="flex items-start gap-3 text-xs font-bold text-gray-400 cursor-pointer p-2 rounded-xl bg-gray-50/50 border border-gray-100">
+      <input type="checkbox" class="accent-primary mt-1 flex-shrink-0"/>
+      <span class="leading-relaxed">أوافق على <a href="#" class="text-primary underline">الشروط والأحكام</a> وسياسة الخصوصية الخاصة بشركة جوباص</span>
+    </label>
+    
+    <button onclick="doSignup()" class="btn-orange w-full h-14 rounded-2xl font-black text-lg mt-4 shadow-xl shadow-primary/20">إنشاء الحساب</button>
+  </div>
+  
+  <p class="text-center text-sm font-bold text-gray-400 mt-8">
+    لديك حساب؟ <a href="#" onclick="navigate('login')" class="text-primary font-black ml-1">سجّل دخولك الآن</a>
+  </p>
+  <button onclick="navigate('index')" class="w-full text-center text-xs font-bold text-gray-300 mt-4 uppercase tracking-widest hover:text-navy transition">← الرجوع للرئيسية</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  function doSignup() {
+    loader(true);
+    setTimeout(() => {
+      loader(false);
+      navigate('verify');
+    }, 1500);
+  }
+</script>
+</body>
+</html>

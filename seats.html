@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>اختار مقعدك - جوباص</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F6FA]">
+
+<header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <div class="top-bar px-6 lg:px-12">
+    <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
+      <div id="area-login" class="flex items-center gap-3">
+        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
+          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
+        </button>
+      </div>
+      <div class="hidden lg:flex items-center gap-6">
+        <span class="phone font-bold">19567</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="step-bar">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex items-center justify-between text-white text-xs mb-3">
+      <button onclick="navigate('trips')" class="flex items-center gap-1 opacity-70 hover:opacity-100 transition"><i class="fa fa-arrow-right ml-1"></i> الرجوع</button>
+      <span class="font-bold opacity-90">اختيار المقعد</span>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="sdot done"><i class="fa fa-check text-[10px]"></i></div> <div class="sline done"></div>
+      <div class="sdot active">٢</div> <div class="sline"></div>
+      <div class="sdot pend">٣</div> <div class="sline"></div>
+      <div class="sdot pend">٤</div>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+  <div class="grid md:grid-cols-5 gap-8 items-start">
+    
+    <!-- SEAT MAP -->
+    <div class="md:col-span-3 bg-white rounded-[22px] p-6 lg:p-8 shadow-sm border border-gray-100">
+      <h3 class="font-black text-navy text-center mb-6">خريطة المقاعد</h3>
+      
+      <!-- Legend -->
+      <div class="flex items-center justify-center gap-5 mb-8 flex-wrap">
+        <div class="flex items-center gap-2 text-xs font-bold"><div class="seat avail w-5 h-5 text-[9px] rounded-md"></div> متاح</div>
+        <div class="flex items-center gap-2 text-xs font-bold"><div class="seat sel w-5 h-5 text-[9px] rounded-md"></div> مختار</div>
+        <div class="flex items-center gap-2 text-xs font-bold"><div class="seat taken w-5 h-5 text-[9px] rounded-md"></div> محجوز</div>
+        <div class="flex items-center gap-2 text-xs font-bold"><div class="seat ladies w-5 h-5 text-[9px] rounded-md"></div> سيدات</div>
+      </div>
+
+      <!-- Bus Layout -->
+      <div class="max-w-[280px] mx-auto bg-gray-50/50 rounded-[40px] p-8 pb-10 border border-gray-100/50 relative">
+        <!-- Steering -->
+        <div class="flex justify-start mb-6">
+          <div class="bg-gray-200 text-white text-[10px] w-10 h-10 rounded-full flex items-center justify-center shadow-inner">
+            <i class="fa fa-life-ring"></i>
+          </div>
+        </div>
+        <div id="seat-map" class="space-y-4">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="mt-8 text-center">
+          <div class="bg-gray-100 text-gray-400 text-[10px] px-4 py-1.5 rounded-full inline-block font-bold">
+            <i class="fa fa-door-open ml-1"></i> باب الصعود
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="md:col-span-2 space-y-5">
+      <div class="bg-white rounded-[22px] p-6 shadow-sm border border-gray-100">
+        <h3 class="font-black text-navy mb-5 pb-3 border-b border-gray-50">ملخص الرحلة</h3>
+        <div class="space-y-4 text-sm font-bold text-navy">
+          <div class="flex justify-between"><span class="text-gray-400">من</span><span id="s-from">القاهرة</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">إلى</span><span id="s-to">الاسكندرية</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">التاريخ</span><span id="s-date">٢١ مارس ٢٠٢٥</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">الوقت</span><span id="s-time" class="text-primary text-lg">٠٨:٠٠ ص</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">الدرجة</span><span id="s-cls">Super Jet</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">الأفراد</span><span id="s-pax">١ مسافر</span></div>
+          <hr class="border-gray-50"/>
+          <div class="flex justify-between">
+            <span class="text-gray-400">المقاعد المختارة</span>
+            <span id="s-seats" class="text-primary">لم تشر بعد</span>
+          </div>
+          <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl mt-4">
+            <span class="font-black text-navy">الإجمالي</span>
+            <span id="s-total" class="font-black text-primary text-2xl">٠ ج.م</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMER -->
+      <div id="timer-box" class="timer-box p-5">
+        <div class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">الوقت المتبقي</div>
+        <div id="timer-txt" class="text-3xl font-black text-navy leading-none">10:00</div>
+      </div>
+
+      <button id="btn-continue" onclick="goPassenger()" disabled class="btn-green w-full h-[64px] rounded-[18px] font-black text-lg shadow-xl shadow-green-500/20 opacity-50 cursor-not-allowed">
+        متابعة بيانات المسافر ←
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/seats.js"></script>
+</body>
+</html>
