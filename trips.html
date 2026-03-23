@@ -12,92 +12,163 @@
 </head>
 <body class="bg-[#F5F6FA]">
 
-<!-- GLOBAL HEADER (simplified for MPA) -->
+
+<!-- GLOBAL HEADER -->
 <header class="sticky top-0 z-50 shadow-sm" id="site-header">
   <div class="top-bar px-6 lg:px-12">
     <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
-      <div id="area-login" class="flex items-center gap-3">
-        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
-          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
-        </button>
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 border-l border-white/20 pl-6 h-full">
+          <a href="#" class="hover:text-white transition"><i class="fa fa-shuttle-van mr-1"></i> جو ميني</a>
+          <a href="#" class="hover:text-white transition"><i class="fa fa-car mr-1"></i> جو ليمو</a>
+          <a href="#" class="text-white font-black">جوباص</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="#" class="hover:text-white transition">الأسئلة الشائعة</a>
+          <a href="#" class="hover:text-white transition">أخبار جوباص</a>
+          <a href="#" class="hover:text-white transition">عن جوباص</a>
+          <a href="#" class="hover:text-white transition">اتصل بنا</a>
+        </div>
       </div>
-      <div class="hidden lg:flex items-center gap-6">
-        <span class="phone font-bold">19567</span>
-        <a href="#" class="font-bold">English</a>
+      <div class="flex items-center gap-4">
+        <a href="#" class="font-bold border-l border-white/20 pl-4 hover:text-white transition">English</a>
+        <span class="phone font-black">19567 <i class="fa fa-phone-alt ml-1 text-[10px]"></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar px-6 lg:px-12 py-0">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between h-[72px]">
+      <div class="pb-1 cursor-pointer" onclick="navigate('index')">
+        <span class="text-[32px] font-black" style="color:#393C59;line-height:1">go<span style="color:#FC9901">bus.</span></span>
+      </div>
+      <div class="hidden lg:flex items-center h-full">
+        <span class="nav-link px-6 h-full flex items-center active" onclick="navigate('index')">الصفحة الرئيسية</span>
+        <span class="nav-link px-6 h-full flex items-center" onclick="navigate('bundles')">اشتراكات التوفير</span>
+        <span class="nav-link px-6 h-full flex items-center">خطوط السفر</span>
+        <span class="nav-link px-6 h-full flex items-center">محطات جوباص</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <img src="assets/images/account.png" class="w-8 h-8 rounded-full border border-gray-100 object-cover" onerror="this.src='https://i.pravatar.cc/32?u=u'"/>
+        <span class="text-sm font-bold text-navy">محمد أحمد <i class="fa fa-chevron-down text-[10px] mr-1 opacity-40"></i></span>
       </div>
     </div>
   </div>
 </header>
 
-<!-- STEP BAR -->
-<div class="step-bar">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="flex items-center justify-between text-white text-xs mb-3">
-      <button onclick="navigate('index')" class="flex items-center gap-1 opacity-70 hover:opacity-100 transition"><i class="fa fa-arrow-right ml-1"></i> تعديل البحث</button>
-      <span class="font-bold opacity-90" id="trips-lbl">جارِ التحميل...</span>
-    </div>
-    <div class="flex items-center gap-1">
-      <div class="sdot active">١</div> <div class="sline"></div>
-      <div class="sdot pend">٢</div> <div class="sline"></div>
-      <div class="sdot pend">٣</div> <div class="sline"></div>
-      <div class="sdot pend">٤</div>
-    </div>
-    <div class="flex justify-between text-white opacity-50 text-[11px] mt-2 font-bold px-2">
-      <span class="w-16">اختيار الرحلة</span> <span class="w-16">اختيار المقعد</span>
-      <span class="w-16">بيانات المسافر</span> <span class="w-16">الدفع</span>
+<main class="bg-[#F8F9FA] min-h-screen">
+  <!-- Progress Steps -->
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12 pt-12">
+    <div class="steps-wrap">
+       <div class="steps-line"></div>
+       <div class="step-item active">
+          <div class="circle">1</div>
+          <div class="label">اختر الرحلة</div>
+       </div>
+       <div class="step-item">
+          <div class="circle">2</div>
+          <div class="label">اختيار الكراسي</div>
+       </div>
+       <div class="step-item">
+          <div class="circle">3</div>
+          <div class="label">دفع</div>
+       </div>
     </div>
   </div>
-</div>
 
-<main class="max-w-7xl mx-auto px-6 py-8">
-  <div class="flex flex-col lg:flex-row gap-8">
-    
-    <!-- FILTERS -->
-    <aside class="lg:w-64 flex-shrink-0">
-      <div class="bg-white rounded-2xl border border-gray-100 p-5 sticky top-[100px] shadow-sm">
-        <h3 class="font-black text-navy text-sm mb-5 flex items-center gap-2">
-          <i class="fa fa-sliders-h text-primary"></i> تصفية النتائج
-        </h3>
-        <!-- Time Filter -->
-        <div class="mb-5">
-          <p class="text-xs font-bold text-gray-400 uppercase mb-3 px-1">وقت الإقلاع</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="filter-chip on">صباحاً</span>
-            <span class="filter-chip on">مساءً</span>
-            <span class="filter-chip">ليلاً</span>
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      
+      <!-- MAIN: TRIP LIST (RIGHT) -->
+      <div class="flex-1 order-1 lg:order-2">
+        <h2 class="text-2xl font-black text-navy mb-6 text-right">اختر الرحلة</h2>
+        
+        <!-- Go Trip Section -->
+        <div class="mb-10 text-right">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest cursor-pointer" onclick="navigate('index')">تغيير الموعد <i class="fa fa-chevron-left mr-1"></i></span>
+            <div class="flex items-center gap-3">
+              <span class="font-black text-navy">رحلة الذهاب</span>
+              <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold" id="from-to-badge">جاري التحميل...</span>
+            </div>
+          </div>
+          
+          <div class="date-tabs mb-6" id="date-tabs-go"></div>
+          
+          <div id="trips-list-go" class="space-y-4">
+            <!-- Triplist rendered by JS -->
           </div>
         </div>
-        <!-- Price Filter -->
-        <div class="mb-5 px-1">
-          <p class="text-xs font-bold text-gray-400 uppercase mb-3">السعر (ج.م)</p>
-          <input type="range" min="50" max="400" value="400" class="w-full accent-primary shadow-sm"/>
-        </div>
-        <!-- Amenities -->
-        <div class="px-1">
-          <p class="text-xs font-bold text-gray-400 uppercase mb-3">المميزات</p>
-          <div class="space-y-3 text-sm font-bold text-navy">
-            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" checked/> WiFi مجاني</label>
-            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox"/> وجبات</label>
-            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" checked/> تكييف</label>
-          </div>
-        </div>
-      </div>
-    </aside>
 
-    <!-- LIST -->
-    <div class="flex-1">
-      <div class="flex items-center justify-between mb-5">
-        <p class="text-sm font-bold text-gray-400 uppercase tracking-wide">عُثر على <strong id="trip-count" class="text-navy font-black text-base"><span id="trip-count-val">0</span></strong> رحلات</p>
-        <select class="finput w-auto h-10 py-0 text-sm font-bold rounded-xl border-gray-100 bg-white">
-          <option>ترتيب: الوقت</option><option>ترتيب: السعر ↑</option>
-        </select>
+        <!-- Return Trip Section (Optional) -->
+        <div id="return-section" class="mb-10 text-right" style="display:none">
+          <div class="flex items-center justify-between mb-4">
+             <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest">تغيير الموعد <i class="fa fa-chevron-left mr-1"></i></span>
+             <span class="font-black text-navy">رحلة العودة</span>
+          </div>
+          <div class="date-tabs mb-6" id="date-tabs-ret"></div>
+          <div id="trips-list-ret" class="space-y-4"></div>
+        </div>
       </div>
-      <div id="trips-list" class="space-y-4">
-        <!-- Rendered by JS -->
+
+      <!-- SIDEBAR: SUMMARY (LEFT) -->
+      <div class="w-full lg:w-[360px] order-2 lg:order-1">
+        <div class="sticky top-[100px] space-y-6">
+          <div class="summary-box">
+             <div class="flex items-center justify-between mb-6">
+                <span class="bg-primary/10 text-primary px-2 py-1 rounded text-[10px] font-black uppercase">رقم الحجز: ١</span>
+                <span class="text-xs font-bold text-navy" id="s-pax">١ مسافر</span>
+             </div>
+             
+             <div class="summary-item">
+                <div class="summary-label">الذهاب: <span id="s-go-date">١٢ يوليو ٢٠٢٤</span></div>
+                <div class="summary-val" id="s-go-route">القاهرة - المحطة</div>
+             </div>
+             
+             <div id="summary-ret-item" class="summary-item" style="display:none">
+                <div class="summary-label">العودة: <span id="s-ret-date">١٥ يوليو ٢٠٢٤</span></div>
+                <div class="summary-val" id="s-ret-route">الاسكندرية - القاهرة</div>
+             </div>
+
+             <div class="py-6 flex items-center justify-between border-b border-dashed border-gray-100">
+                <span class="text-xs font-bold text-gray-400">تفعيل كود الخصم</span>
+                <div class="flex items-center gap-2">
+                   <div class="w-8 h-4 bg-gray-200 rounded-full relative cursor-pointer"><div class="absolute left-1 top-1 w-2 h-2 bg-white rounded-full"></div></div>
+                </div>
+             </div>
+
+             <div class="pt-6">
+                <div class="flex items-center justify-between mb-4 text-right">
+                   <span class="text-sm font-bold text-navy">الإجمالي</span>
+                   <div class="text-left">
+                      <div class="total-price" id="s-total">EGP ١٢٠.٠٠</div>
+                      <div class="text-[10px] font-bold text-gray-300">سعر شامل الضريبة</div>
+                   </div>
+                </div>
+                <button class="search-btn h-[56px] bg-[#00AA00] hover:bg-[#008800] text-white font-black text-lg shadow-xl shadow-green-500/20" onclick="confirmBooking()">تأكيد الرحلات</button>
+             </div>
+          </div>
+          
+          <img src="assets/images/hero.jpg" class="w-full rounded-[20px] h-[140px] object-cover" />
+        </div>
       </div>
+
     </div>
   </div>
 </main>
+
+<footer class="bg-white border-t border-gray-100 py-12">
+  <div class="max-w-[1440px] mx-auto px-6 text-center">
+    <div class="text-[32px] font-black text-navy mb-8">go<span class="text-primary">bus.</span></div>
+    <div class="flex flex-wrap justify-center gap-8 mb-8 text-sm font-bold text-gray-400">
+      <a href="#" class="hover:text-navy transition">عن الشركة</a>
+      <a href="#" class="hover:text-navy transition">جهات السفر</a>
+      <a href="#" class="hover:text-navy transition">محطات السفر</a>
+      <a href="#" class="hover:text-navy transition">أخبار جوباص</a>
+      <a href="#" class="hover:text-navy transition">اتصل بنا</a>
+    </div>
+    <p class="text-[11px] font-bold text-gray-300 uppercase tracking-widest">جميع حقوق التصميم والملكية الفكرية مسجلة ومحفوظة لشركة جوباص © ٢٠٢٥</p>
+  </div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="assets/js/main.js"></script>

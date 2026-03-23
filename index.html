@@ -30,227 +30,256 @@
 
 <!-- GLOBAL HEADER -->
 <header class="sticky top-0 z-50 shadow-sm" id="site-header">
+  <!-- Top Bar (Orange) -->
   <div class="top-bar px-6 lg:px-12">
     <div class="max-w-[1440px] mx-auto h-full flex items-center justify-between">
-      <div id="area-login" class="flex items-center gap-3">
-        <button onclick="navigate('login')" class="h-8 px-4 rounded-full text-xs font-bold text-white cursor-pointer transition hover:opacity-90 flex items-center gap-2" style="background:#393C59">
-          <i class="fa fa-user-circle text-sm"></i> تسجيل الدخول
-        </button>
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 border-l border-white/20 pl-6 h-full">
+          <a href="#" class="hover:text-white transition"><i class="fa fa-shuttle-van mr-1"></i> جو ميني</a>
+          <a href="#" class="hover:text-white transition"><i class="fa fa-car mr-1"></i> جو ليمو</a>
+          <a href="#" class="text-white font-black">جوباص</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="#" class="hover:text-white transition">الأسئلة الشائعة</a>
+          <a href="#" class="hover:text-white transition">أخبار جوباص</a>
+          <a href="#" class="hover:text-white transition">عن جوباص</a>
+          <a href="#" class="hover:text-white transition">اتصل بنا</a>
+        </div>
       </div>
-      <nav class="hidden lg:flex items-center gap-6">
-        <a href="#">اتصل بنا</a>
-        <a href="#">الشروط والأحكام</a>
-        <a href="#">سياسة الخصوصية</a>
-        <a href="#">شركة جوباص</a>
-        <a href="#">أخبار جوباص</a>
-        <a href="#">الأسئلة الشائعة</a>
-        <a href="#" class="font-bold">English</a>
-        <span class="phone flex items-center gap-1 font-bold">19567</span>
-      </nav>
+      <div class="flex items-center gap-4">
+        <a href="#" class="font-bold border-l border-white/20 pl-4 hover:text-white transition">English</a>
+        <span class="phone font-black">19567 <i class="fa fa-phone-alt ml-1 text-[10px]"></i></span>
+      </div>
     </div>
   </div>
+
+  <!-- Main Nav -->
   <div class="nav-bar px-6 lg:px-12 py-0">
-    <div class="max-w-[1440px] mx-auto flex items-end justify-between">
-      <div class="flex items-end gap-0">
-        <div class="flex items-end gap-1 mr-6">
-          <button class="svc-tab active" id="st-bus"> <i class="fa fa-bus text-xs"></i> جوباص</button>
-          <button class="svc-tab" id="st-mini"> <i class="fa fa-shuttle-van text-xs"></i> جو ميني</button>
-          <button class="svc-tab" id="st-limo"> <i class="fa fa-car text-xs"></i> جو ليمو</button>
-        </div>
-        <div class="pb-2 cursor-pointer pr-4" onclick="navigate('index')">
-          <span class="text-[26px] font-black" style="color:#393C59;line-height:1">go<span style="color:#FC9901">bus.</span></span>
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between h-[72px]">
+      <div class="flex items-center gap-2">
+        <div class="pb-1 cursor-pointer" onclick="navigate('index')">
+          <span class="text-[32px] font-black" style="color:#393C59;line-height:1">go<span style="color:#FC9901">bus.</span></span>
         </div>
       </div>
-      <div class="hidden lg:flex items-center gap-8 pb-3">
-        <span class="nav-link">محطات جوباص</span>
-        <span class="nav-link">خطوط السفر</span>
-        <span class="nav-link" onclick="navigate('bundles')">اشتراكات التوفير</span>
-        <span class="nav-link active" onclick="navigate('index')">الصفحة الرئيسية</span>
+      
+      <div class="hidden lg:flex items-center h-full">
+        <span class="nav-link px-6 h-full flex items-center bg-[#F2F4F7] text-primary active border-none" onclick="navigate('index')">الصفحة الرئيسية</span>
+        <span class="nav-link px-6 h-full flex items-center" onclick="navigate('bundles')">اشتراكات التوفير</span>
+        <span class="nav-link px-6 h-full flex items-center">خطوط السفر</span>
+        <span class="nav-link px-6 h-full flex items-center">محطات جوباص</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <img src="assets/images/account.png" class="w-8 h-8 rounded-full border border-gray-100 object-cover" onerror="this.src='https://i.pravatar.cc/32?u=u'"/>
+        <span class="text-sm font-bold text-navy">محمد أحمد <i class="fa fa-chevron-down text-[10px] mr-1 opacity-40"></i></span>
       </div>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 lg:py-14 relative z-10">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+  <!-- HERO SECTION (MATCHING SCREENSHOT) -->
+  <section class="relative bg-primary overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-12 lg:py-20 relative z-10 text-right">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
-        <!-- SEARCH CARD -->
-        <div class="search-card flex-shrink-0 w-full lg:w-[540px]">
-          <div class="flex items-center gap-5 mb-5">
-            <label class="radio-label"><input type="radio" name="ttype" value="round" checked onchange="toggleRet()"> سفر وعودة</label>
-            <label class="radio-label"><input type="radio" name="ttype" value="one" onchange="toggleRet()"> سفر فقط</label>
-          </div>
-          <div class="grid grid-cols-2 gap-3 mb-1">
-            <div>
-              <span class="field-label">سفر من مدينة</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-map-marker-alt" style="color:#FC9901"></i></span>
-                <select id="fc" class="truncate">
-                  <option value="cairo">القاهرة</option><option value="alex">الاسكندرية</option>
-                  <option value="aswan">أسوان</option><option value="luxor">الأقصر</option>
-                  <option value="hurghada">الغردقة</option><option value="sharm">شرم الشيخ</option>
-                </select>
-              </div>
+        <!-- SEARCH CARD (LEFT) -->
+        <div class="w-full lg:w-[480px] flex-shrink-0">
+          <div class="search-card">
+            <div class="flex items-center gap-6 mb-8 text-sm font-bold text-navy">
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="ttype" value="round" checked onchange="toggleRet()" class="accent-primary"/> سفر وعودة</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="ttype" value="one" onchange="toggleRet()" class="accent-primary"/> سفر فقط</label>
             </div>
-            <div>
-              <span class="field-label">سفر من محطة</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-building" style="color:#FC9901"></i></span>
-                <select id="fs"><option>عبد المنعم رياض</option><option>الماظة</option></select>
+            
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block">سفر من مدينة</label>
+                  <div class="field-wrap"><select id="fc" class="w-full font-bold text-navy outline-none bg-transparent h-full"><option value="cairo">القاهرة</option><option value="alex">الاسكندرية</option></select></div>
+                </div>
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block text-left">سفر من محطة</label>
+                  <div class="field-wrap"><select id="fs" class="w-full font-bold text-navy outline-none bg-transparent h-full"><option>عبد المنعم رياض</option></select></div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="flex justify-center -my-2 relative z-20">
-            <button class="swap-btn" onclick="swapCities()"><i class="fa fa-exchange-alt"></i></button>
-          </div>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div>
-              <span class="field-label">وصول إلى مدينة</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-map-marker-alt" style="color:#393C59"></i></span>
-                <select id="tc" class="truncate">
-                  <option value="alex">الاسكندرية</option><option value="cairo">القاهرة</option>
-                  <option value="aswan">أسوان</option><option value="luxor">الأقصر</option>
-                </select>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block">وصول لمدينة</label>
+                  <div class="field-wrap"><select id="tc" class="w-full font-bold text-navy outline-none bg-transparent h-full"><option value="sharm">شرم الشيخ</option><option value="alex">الاسكندرية</option></select></div>
+                </div>
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block text-left">وصول لمحطة</label>
+                  <div class="field-wrap"><select id="ts" class="w-full font-bold text-navy outline-none bg-transparent h-full"><option>الرويسات</option></select></div>
+                </div>
               </div>
-            </div>
-            <div>
-              <span class="field-label">وصول إلى محطة</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-building" style="color:#393C59"></i></span>
-                <select id="ts"><option>سيدي جابر</option><option>المحطة المركزية</option></select>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block">تاريخ السفر</label>
+                  <div class="field-wrap"><input type="text" id="dp-go" class="w-full font-bold text-navy outline-none bg-transparent h-full" value="١٥ أغسطس ٢٠٢٤" readonly/></div>
+                </div>
+                <div>
+                  <label class="text-[11px] font-bold text-gray-400 mb-1 block text-left">تاريخ العودة</label>
+                  <div class="field-wrap" id="ret-wrap"><input type="text" id="dp-ret" class="w-full font-bold text-navy outline-none bg-transparent h-full" placeholder="اختر تاريخ" readonly/></div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-3 mb-5">
-            <div>
-              <span class="field-label">تاريخ السفر</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-calendar-alt" style="color:#FC9901"></i></span>
-                <input type="text" id="dp-go" readonly placeholder="اختر تاريخ"/>
+
+              <div>
+                <label class="text-[11px] font-bold text-gray-400 mb-1 block">عدد المسافرين</label>
+                <div class="field-wrap flex items-center justify-between px-4">
+                  <span class="font-bold text-navy"><span id="pax-n">1</span> مسافر</span>
+                  <div class="flex items-center gap-3">
+                    <button class="w-6 h-6 rounded bg-gray-200 text-gray-500 font-bold" onclick="cPax(-1)">−</button>
+                    <button class="w-6 h-6 rounded bg-primary text-white font-bold" onclick="cPax(1)">+</button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="ret-wrap">
-              <span class="field-label">تاريخ العودة</span>
-              <div class="field-wrap">
-                <span class="icon"><i class="fa fa-calendar-alt" style="color:#393C59"></i></span>
-                <input type="text" id="dp-ret" readonly placeholder="اختر تاريخ"/>
-              </div>
+
+              <button class="search-btn mt-4" onclick="doSearch()">أعرض رحلات جوباص <i class="fa fa-search ml-2 text-xs opacity-60"></i></button>
             </div>
           </div>
-          <div class="flex items-center justify-between mb-6">
-            <div class="text-right">
-              <span class="field-label mb-0">عدد المسافرين</span>
-              <p class="text-[10px] text-gray-400 font-bold">تُحسب تذكرة كاملة للأطفال فوق 4 سنوات</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <button class="pax-btn pax-minus" onclick="cPax(-1)" style="background:#BBC9D9;color:#fff;border-radius:2px">−</button>
-              <span id="pax-n" class="text-lg font-black text-navy w-5 text-center">1</span>
-              <button class="pax-btn pax-plus" onclick="cPax(1)" style="background:#FC9900;color:#fff;border-radius:2px">+</button>
-            </div>
-          </div>
-          <button class="search-btn" onclick="doSearch()">
-            <i class="fa fa-search"></i> أعرض رحلات جو باص
-          </button>
         </div>
 
-        <!-- HERO TEXT -->
-        <div class="hero-content mt-8 lg:mt-4 text-white text-right flex-1">
-          <p class="text-lg font-bold text-navy mb-1">مسافر على فين؟</p>
-          <h1 class="hero-headline xl:text-[52px]">أسرع وأريح وسيلة سفر في مصر</h1>
-          <div class="mt-8 flex flex-wrap gap-8 items-center justify-end">
-            <div class="text-center">
-              <div class="text-4xl font-black">+١٤٠٠</div>
-              <div class="text-sm opacity-70">أتوبيس</div>
-            </div>
-            <div class="w-px h-12 bg-white/20"></div>
-            <div class="text-center">
-              <div class="text-4xl font-black">٨٧</div>
-              <div class="text-sm opacity-70">مدينة مصرية</div>
-            </div>
-            <div class="w-px h-12 bg-white/20"></div>
-            <div class="text-center">
-              <div class="text-4xl font-black">٢٤/٧</div>
-              <div class="text-sm opacity-70">خدمة العملاء</div>
-            </div>
+        <!-- HERO CONTENT (RIGHT) -->
+        <div class="text-white flex-1 relative min-h-[400px]">
+          <p class="text-lg font-bold opacity-80 mb-2">مسافر على فين؟</p>
+          <h1 class="text-[52px] font-black leading-tight mb-8">أسرع وأريح وسيلة سفر في مصر</h1>
+          
+          <!-- Large Bus Image spanning half the hero -->
+          <div class="absolute -left-20 -bottom-20 lg:-left-40 lg:-bottom-24 w-[120%] h-full pointer-events-none">
+             <img src="assets/images/bus-image-ar.png" class="w-full h-full object-contain object-right-bottom scale-110" alt="GoBus" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'"/>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROMO SECTION -->
-  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="promo-family" onclick="navigate('trips')">
-        <span class="badge-new">جديد من جوباص</span>
-        <h3 class="promo-title">سافر مع عيلتك أو أصحابك<br><span class="highlight">بخصم حتى 15%</span></h3>
-        <button class="promo-cta">أحجز الآن</button>
+  <!-- PROMO CARDS (MATCHING SCREENSHOT) -->
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-16">
+    <div class="grid md:grid-cols-2 gap-8 text-right">
+      <!-- Family Promo -->
+      <div class="relative rounded-[32px] overflow-hidden group h-[280px] bg-[#FFEEDB]">
+        <img src="assets/images/hero.jpg" class="absolute inset-x-0 bottom-0 w-full h-[80%] object-cover object-top opacity-80" />
+        <div class="relative p-10 h-full flex flex-col items-end">
+          <span class="bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full mb-4">جديد من جوباص</span>
+          <h3 class="text-3xl font-black text-navy leading-tight mb-2">سافر مع عيلتك<br>أو أصحابك <span class="text-primary">بخصم حتى ١٥%</span></h3>
+          <button class="mt-auto bg-primary text-white px-8 py-2.5 rounded-xl font-black text-sm shadow-xl shadow-primary/30">أحجز الآن</button>
+        </div>
       </div>
-      <div class="promo-bundle" onclick="navigate('bundles')">
-        <span class="badge-new">جديد من جوباص</span>
-        <h3 class="promo-title">سافر ووفر على نفس الخط<br>مع باقات التوفير</h3>
-        <button class="promo-cta">اشترك الآن</button>
+      <!-- Bundle Promo -->
+      <div class="relative rounded-[32px] overflow-hidden group h-[280px] bg-[#E0F5FD]">
+        <img src="assets/images/hero.png" class="absolute inset-x-0 bottom-0 w-full h-[80%] object-cover object-top opacity-80" />
+        <div class="relative p-10 h-full flex flex-col items-end">
+          <span class="bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full mb-4">وفّر مع جوباص</span>
+          <h3 class="text-3xl font-black text-navy leading-tight mb-2">سافر ووفر على<br>نفس الخط <span class="text-primary">بباقات التوفير</span></h3>
+          <button class="mt-auto bg-primary text-white px-8 py-2.5 rounded-xl font-black text-sm shadow-xl shadow-primary/30">أحجز الآن</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
-  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 pb-16">
-    <div class="text-center mb-10">
-      <h2 class="text-[26px] font-black text-black mb-2">تجربة سفر ممتعة ومريحة</h2>
-      <p class="text-lg">أكثر من ١٤٠٠ أتوبيس حول أكثر من ٨٧ مدينة مصرية</p>
+  <!-- SERVICES GRID -->
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 pb-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-black text-navy mb-2">تجربة سفر ممتعة ومريحة</h2>
+      <p class="text-gray-400 font-bold">أكثر من ١٤٠٠ أتوبيس حول أكثر من ٨٧ مدينة مصرية</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="svc-banner">
-        <img src="https://i.ibb.co/L8T6SVT/limo.jpg" class="absolute inset-0 w-full h-full object-cover" alt="جو ليمو" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80'"/>
-        <div class="grad-overlay"></div>
-        <div class="info">
-          <h3>جو ليمو</h3>
-          <p>سافر بسيارة خاصة فاخرة</p>
-          <button class="cta-banner">أحجز جو ليمو</button>
+    <div class="grid md:grid-cols-3 gap-8 text-right">
+      <div class="group relative rounded-[32px] overflow-hidden h-[400px] shadow-2xl shadow-gray-200/50">
+        <img src="assets/images/bus-image.png" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 right-0 p-8 text-white">
+          <h3 class="text-2xl font-black mb-1">جو ليمو</h3>
+          <p class="text-xs opacity-70 font-bold mb-4">سافر بسيارة خاصة فاخرة</p>
+          <button class="bg-primary text-white py-2.5 px-8 rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-primary/40">أحجز الان</button>
         </div>
       </div>
-      <div class="svc-banner">
-        <img src="https://i.ibb.co/VvzMHSs/mini.jpg" class="absolute inset-0 w-full h-full object-cover" alt="جو ميني" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80'"/>
-        <div class="grad-overlay"></div>
-        <div class="info">
-          <h3>جو ميني</h3>
-          <p>سفر سريع وممتع</p>
-          <button class="cta-banner">أحجز جو ميني</button>
+      <div class="group relative rounded-[32px] overflow-hidden h-[400px] shadow-2xl shadow-gray-200/50">
+        <img src="assets/images/destination/Sharm-hero.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 right-0 p-8 text-white">
+          <h3 class="text-2xl font-black mb-1">جو ميني</h3>
+          <p class="text-xs opacity-70 font-bold mb-4">سفر سريع وممتع</p>
+          <button class="bg-primary text-white py-2.5 px-8 rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-primary/40">أحجز الان</button>
         </div>
       </div>
-      <div class="svc-banner">
-        <img src="https://i.ibb.co/rtL963m/routes.jpg" class="absolute inset-0 w-full h-full object-cover" alt="وجهات سفر" onerror="this.src='https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80'"/>
-        <div class="grad-overlay"></div>
-        <div class="info">
-          <h3 class="mb-4">وجهات سفر جوباص</h3>
-          <a href="#">٨٧ وجهة سفر حول مصر</a>
+      <div class="group relative rounded-[32px] overflow-hidden h-[400px] shadow-2xl shadow-gray-200/50">
+        <img src="assets/images/destination/hero.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" onerror="this.src='assets/images/destination/Alex-hero.jpg'"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 right-0 p-8 text-white">
+          <h3 class="text-2xl font-black mb-1">وجهات سفر جوباص</h3>
+          <p class="text-xs opacity-70 font-bold mb-4">٨٧ وجهة سفر حول مصر</p>
+          <button class="bg-primary text-white py-2.5 px-8 rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-primary/40">استكشف الوجهات</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP & HISTORY SECTION -->
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 pb-24">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- History Info (Left) -->
+      <div class="text-right">
+        <div class="text-[96px] font-black text-primary/10 leading-none mb-4 -mx-1" style="-webkit-text-stroke: 1.5px #FC9901">1998</div>
+        <h2 class="text-[34px] font-black text-navy mb-8 leading-tight">راحتكم هو هدفنا الأسمى<br>دائماً منذ عام 1998</h2>
+        <p class="text-gray-400 font-bold text-lg leading-relaxed mb-10 pl-12">نحن نعمل باستمرار على تطوير خدماتنا لتوفير أفضل تجربة سفر لعملائنا في جميع أنحاء الجمهورية.</p>
+        <div class="space-y-4">
+          <a href="#" class="block text-primary font-black text-lg hover:translate-x-[-12px] transition duration-300">تاريخ شركة جوباص</a>
+          <a href="#" class="block text-primary font-black text-lg hover:translate-x-[-12px] transition duration-300">أخبارنا</a>
+          <a href="#" class="block text-primary font-black text-lg hover:translate-x-[-12px] transition duration-300">سياسة الخصوصية</a>
+          <a href="#" class="block text-primary font-black text-lg hover:translate-x-[-12px] transition duration-300">اتصل بنا</a>
+        </div>
+      </div>
+      <!-- App Card (Right) -->
+      <div class="relative bg-primary rounded-[48px] p-12 lg:p-20 overflow-hidden flex flex-col items-center text-center shadow-2xl shadow-primary/20">
+        <h2 class="text-4xl font-black text-navy mb-4">تطبيق جوباص الجديد</h2>
+        <p class="text-navy/70 font-bold text-xl mb-12">حمّل التطبيق واجز في ثواني</p>
+        <div class="flex gap-5 mb-16 relative z-10">
+          <img src="assets/images/app-store.png" class="h-10 cursor-pointer hover:scale-105 transition" />
+          <img src="assets/images/google-play.png" class="h-10 cursor-pointer hover:scale-105 transition" />
+        </div>
+        <!-- Phone Mockup -->
+        <div class="relative w-[300px] h-[580px] bg-[#1a1f3c] border-[10px] border-[#393C59] rounded-[56px] shadow-3xl p-5 mt-4">
+           <div class="h-full w-full bg-white rounded-[40px] overflow-hidden flex flex-col">
+              <div class="bg-primary p-4 flex items-center justify-center"><span class="text-white text-[12px] font-black tracking-[3px]">GOBUS APP</span></div>
+              <div class="p-6 flex-1 space-y-5 text-right">
+                 <div class="h-5 w-3/4 bg-gray-100 rounded-lg"></div>
+                 <div class="h-24 w-full bg-primary/10 rounded-2xl flex items-center justify-center"><i class="fa fa-bus text-primary text-3xl opacity-20"></i></div>
+                 <div class="h-40 w-full bg-gray-50 rounded-2xl p-4">
+                    <div class="h-3 w-1/2 bg-gray-100 rounded-full mb-3"></div>
+                    <div class="h-3 w-full bg-gray-100/50 rounded-full mb-3"></div>
+                    <div class="h-10 w-full bg-primary rounded-xl mt-12"></div>
+                 </div>
+              </div>
+           </div>
+           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#393C59] rounded-b-2xl"></div>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="max-w-[1440px] mx-auto">
-    <div class="text-3xl font-black text-navy mb-8">go<span style="color:#FC9901">bus.</span></div>
-    <div class="footer-links mb-8">
-      <a href="#">عن الشركة</a><a href="#">جهات السفر</a><a href="#">محطات السفر</a>
-      <a href="#">أحجز جو ميني</a><a href="#">أحجز جو ليمو</a><a href="#">الأسئلة الشائعة</a>
-      <a href="#">أخبار جوباص</a><a href="#">اتصل بنا</a><a href="#">حجز أتوبيس</a>
+<footer class="bg-white border-t border-gray-100 py-12">
+  <div class="max-w-[1440px] mx-auto px-6 text-center">
+    <div class="text-[32px] font-black text-navy mb-8">go<span class="text-primary">bus.</span></div>
+    <div class="flex flex-wrap justify-center gap-8 mb-8 text-sm font-bold text-gray-400">
+      <a href="#" class="hover:text-navy transition">عن الشركة</a>
+      <a href="#" class="hover:text-navy transition">جهات السفر</a>
+      <a href="#" class="hover:text-navy transition">محطات السفر</a>
+      <a href="#" class="hover:text-navy transition">أحجز جو ميني</a>
+      <a href="#" class="hover:text-navy transition">أحجز جو ليمو</a>
+      <a href="#" class="hover:text-navy transition">الأسئلة الشائعة</a>
+      <a href="#" class="hover:text-navy transition">أخبار جوباص</a>
+      <a href="#" class="hover:text-navy transition">اتصل بنا</a>
     </div>
-    <div class="flex justify-center gap-4 mb-8 text-xl text-gray-400">
-      <i class="fab fa-facebook-f cursor-pointer hover:text-primary"></i>
-      <i class="fab fa-twitter cursor-pointer hover:text-primary"></i>
-      <i class="fab fa-instagram cursor-pointer hover:text-primary"></i>
-      <i class="fab fa-youtube cursor-pointer hover:text-primary"></i>
+    <div class="flex justify-center gap-6 mb-8 text-xl text-gray-300">
+      <i class="fab fa-facebook-f cursor-pointer hover:text-primary transition"></i>
+      <i class="fab fa-twitter cursor-pointer hover:text-primary transition"></i>
+      <i class="fab fa-instagram cursor-pointer hover:text-primary transition"></i>
+      <i class="fab fa-youtube cursor-pointer hover:text-primary transition"></i>
     </div>
-    <div class="footer-lang">English</div>
-    <p class="footer-copy">جميع حقوق التصميم والملكية الفكرية مسجلة ومحفوظة لشركة جوباص © ٢٠٢٥</p>
+    <p class="text-[11px] font-bold text-gray-300 uppercase tracking-widest">جميع حقوق التصميم والملكية الفكرية مسجلة ومحفوظة لشركة جوباص © ٢٠٢٥</p>
   </div>
 </footer>
 

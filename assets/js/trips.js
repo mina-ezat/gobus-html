@@ -3,75 +3,115 @@
  */
 
 const TRIPS_DATA = [
-  {t:'٠٦:٠٠ ص', a:'٠٩:٠٠ ص', p:75, s:22, cl:'Economy', wi:false, ml:false},
-  {t:'٠٨:٠٠ ص', a:'١١:٠٠ ص', p:95, s:4, cl:'Super Jet', wi:true, ml:false},
-  {t:'١٠:٣٠ ص', a:'٠١:٣٠ م', p:85, s:0, cl:'VIP', wi:true, ml:true },
-  {t:'١٢:٠٠ م', a:'٠٣:٠٠ م', p:75, s:18, cl:'Economy', wi:false, ml:false},
-  {t:'٠٢:٠٠ م', a:'٠٥:٠٠ م', p:95, s:6, cl:'Super Jet', wi:true, ml:false},
-  {t:'٠٥:٠٠ م', a:'٠٨:٠٠ م', p:85, s:28, cl:'Super Jet', wi:true, ml:true },
-  {t:'٠٨:٠٠ م', a:'١١:٠٠ م', p:75, s:12, cl:'Economy', wi:false, ml:false},
-  {t:'١١:٠٠ م', a:'٠٢:٠٠ ص', p:65, s:9, cl:'Economy', wi:false, ml:false},
+  {t:'٠٧:٣٥ م', a:'١٠:٣٥ م', p:120, s:14, cl:'Aero Class', wi:true, ml:true, dur:'٣ ساعات'},
+  {t:'٠٩:١٥ م', a:'١٢:١٥ ص', p:140, s:8,  cl:'VIP Class', wi:true, ml:true, dur:'٣ ساعات'},
+  {t:'١١:٠٠ م', a:'٠٢:٠٠ ص', p:110, s:22, cl:'Economy', wi:false, ml:false, dur:'٣ ساعات'},
+  {t:'٠١:٠٠ ص', a:'٠٤:٠٠ ص', p:120, s:5,  cl:'Aero Class', wi:true, ml:false, dur:'٣ ساعات'},
+];
+
+const DATES = [
+  {day:'الجمعة', date:'١٤ يوليو'},
+  {day:'السبت', date:'١٥ يوليو'},
+  {day:'الأحد', date:'١٦ يوليو'},
+  {day:'الأثنين', date:'١٧ يوليو'},
+  {day:'الثلاثاء', date:'١٨ يوليو'},
+  {day:'الأربعاء', date:'١٩ يوليو'},
 ];
 
 function buildTrips() {
   const from = S.fromCity || 'القاهرة';
   const to = S.toCity || 'الاسكندرية';
-  const date = S.goDate || 'العرض';
   const pax = S.pax || 1;
-  const count = TRIPS_DATA.filter(t => t.s > 0).length;
 
-  $('#trips-lbl').text(`${from} ← ${to} | ${date} | ${pax} مسافر`);
-  $('#trip-count-val').text(count);
+  $('#from-to-badge').text(`${from} ↔ ${to}`);
+  $('#s-pax').text(`${pax} مسافر`);
+  $('#s-go-route').text(`${from} - عبد المنعم رياض`);
+  $('#s-go-date').text(S.goDate || '١٤ يوليو ٢٠٢٤');
+  
+  // Build Date Tabs
+  let dh = '';
+  DATES.forEach((d, i) => {
+    dh += `
+      <div class="date-bubble ${i === 2 ? 'active' : ''}" onclick="selectDate(this)">
+        <div class="day">${d.day}</div>
+        <div class="date">${d.date}</div>
+      </div>`;
+  });
+  $('#date-tabs-go').html(dh);
 
-  let h = '';
+  // Build Trips
+  let th = '';
   TRIPS_DATA.forEach((t, i) => {
-    const full = t.s === 0;
-    const badge = full
-      ? '<span class="seats-badge empty">محجوز كامل</span>'
-      : t.s <= 5
-        ? `<span class="seats-badge low">آخر ${t.s} مقاعد!</span>`
-        : `<span class="seats-badge ok">${t.s} مقعد متاح</span>`;
+    th += `
+    <div class="trip-item">
+      <div class="main-row">
+        <!-- START: DEPARTURE (RIGHT) -->
+        <div class="trip-info-start">
+           <div class="time-val">${t.t}</div>
+           <div class="loc-val">${from}<br>عبد المنعم رياض</div>
+        </div>
 
-    h += `
-    <div class="trip-card ${full ? 'full' : ''} mb-4" onclick="${full ? '' : `pickTrip(${i})`}">
-      <div class="flex items-center gap-6">
-        <div class="text-right flex-1">
-          <div class="text-2xl font-black text-navy">${t.t}</div>
-          <div class="text-xs text-gray-400 mt-0.5">${from}</div>
+        <!-- CENTER: TIMELINE -->
+        <div class="center-timeline">
+           <span class="cls-tag">${t.cl}</span>
+           <span class="text-[10px] font-bold text-gray-300 mb-1">${t.dur}</span>
+           <div class="arrow-track"></div>
+           <div class="flex gap-4 text-[11px] text-gray-300 justify-center mt-2">
+              ${t.wi ? '<i class="fa fa-wifi"></i>' : ''}
+              ${t.ml ? '<i class="fa fa-utensils"></i>' : ''}
+              <i class="fa fa-snowflake"></i>
+           </div>
         </div>
-        <div class="flex-1 text-center">
-          <div class="relative border-t-2 border-dashed border-gray-200 mx-3">
-            <i class="fa fa-bus absolute top-[-11px] left-1/2 -translate-x-1/2 bg-white px-1.5 text-primary text-sm"></i>
-          </div>
-          <div class="text-[11px] text-gray-400 mt-2 font-bold">٣ ساعات</div>
+
+        <!-- END: ARRIVAL (MIDDLE) -->
+        <div class="trip-info-end">
+           <div class="time-val">${t.a}</div>
+           <div class="loc-val">${to}<br>محرم بك</div>
         </div>
-        <div class="text-left flex-1">
-          <div class="text-2xl font-black text-navy">${t.a}</div>
-          <div class="text-xs text-gray-400 mt-0.5">${to}</div>
-        </div>
-        <div class="border-r border-gray-100 pr-5 text-right flex-shrink-0">
-          <div class="text-[26px] font-black text-primary">${t.p}<span class="text-sm font-bold"> ج</span></div>
-          <div class="text-[11px] text-gray-400">/مسافر</div>
+
+        <!-- PRICING & ACTION (LEFT) -->
+        <div class="side-pricing">
+           <div class="text-[10px] font-bold text-gray-400 mb-1">سعر التذكرة تبدأ من</div>
+           <div class="flex items-baseline gap-1">
+              <span class="price-val">EGP ${t.p}.٠٠</span>
+              <span class="text-[10px] font-bold text-gray-300">/مسافر</span>
+           </div>
+           <button class="pick-btn" onclick="pickTrip(${i})">أختار الرحلة <i class="fa fa-chevron-left mr-1 text-[8px]"></i></button>
+           <div class="text-[10px] font-bold text-success text-center mt-2">متاح ${t.s} مقعد</div>
         </div>
       </div>
-      <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">
-        <div class="flex items-center gap-2 flex-wrap">
-          <span class="trip-class-tag">${t.cl}</span>
-          ${t.wi ? '<span class="amenity"><i class="fa fa-wifi text-blue-400"></i> WiFi</span>' : ''}
-          ${t.ml ? '<span class="amenity"><i class="fa fa-utensils text-green-400"></i> وجبة</span>' : ''}
-          <span class="amenity"><i class="fa fa-snowflake text-blue-300"></i> تكييف</span>
-        </div>
-        ${badge}
+
+      <div class="bg-[#F8FAFC] px-10 py-3 border-t border-gray-50 flex items-center justify-between">
+         <div class="flex gap-6 text-[10px] font-bold text-gray-400">
+            <span>رقم الرحلة: ٨٨٧</span>
+            <span>عدد المحطات: ٢</span>
+         </div>
+         <span class="text-[10px] font-black text-primary cursor-pointer hover:underline">خط سير الرحلة <i class="fa fa-chevron-down ml-1"></i></span>
       </div>
     </div>`;
   });
-  $('#trips-list').html(h);
+  $('#trips-list-go').html(th);
 }
 
 function pickTrip(i) {
   S.trip = TRIPS_DATA[i];
   saveState();
+  $('#s-total').text(`EGP ${S.trip.p * (S.pax || 1)}.٠٠`);
+  toast('تم اختيار رحلة الذهاب ✅');
+}
+
+function confirmBooking() {
+  if(!S.trip) {
+    toast('⚠️ يرجى اختيار رحلة أولاً');
+    return;
+  }
   navigate('seats');
+}
+
+function selectDate(el) {
+  $('.date-bubble').removeClass('active');
+  $(el).addClass('active');
+  toast('جارِ تحديث الرحلات للموعد الجديد...');
 }
 
 $(function() {
